@@ -15,7 +15,7 @@
                     <div class="text-left mb-4 text-body-s">
                         <input type="password"  v-model="state.password">
                     </div>
-                </div>
+                </div> 
                 <div class="flex justify-center pt-6">
                     <button @click="handleLogin">Login</button>
                 </div>
