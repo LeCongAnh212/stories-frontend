@@ -10,12 +10,3 @@ export interface LoginResponse {
     access_token: string
     data: UserDetail
 }
-
-export interface UserDetail {
-    id: number
-    role: number
-    name: string
-    email: string
-    avatar: string
-    status: number
-}
