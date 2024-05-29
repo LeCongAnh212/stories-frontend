@@ -8,5 +8,5 @@ export interface LoginResponse {
     code: number
     message: string
     access_token: string
-    data: UserDetail
+    data: any
 }
