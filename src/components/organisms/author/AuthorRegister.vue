@@ -56,13 +56,12 @@ import i18n from '@/i18n'
 
 //const store = useStore()
 const show = ref<boolean>(true)
+const { t } = i18n.global
+const imagePreview = ref<string | null>(null)
 
 const changeShow = () => {
     show.value = !show.value
 }
-
-const { t } = i18n.global
-const imagePreview = ref<string | null>(null)
 
 const author = reactive<FormAuthorData>({
     // create_by_user_id: store.state.auth.user.id,
