@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import tailwindcss from 'tailwindcss'
 import { resolve } from 'path'
+import './vite-plugin-vue-setup-inherit-attrs.ts'
 import inheritAttrs from 'vite-plugin-vue-setup-inherit-attrs'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 

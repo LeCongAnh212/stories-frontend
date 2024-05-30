@@ -41,13 +41,14 @@ const styles = {
     common: 'rounded-lg disabled:cursor-not-allowed focus:ring-offset-0 focus:ring-2 active:ring-2 box-border flex justify-center items-center disabled:bg-gray-75 disabled:text-neutral-50',
     colors: {
         primary: {
-            default: 'text-neutral-0',
+            default: 'text-neutral-0 bg-green-500 hover:bg-green-600',
         },
         secondary: {
             default: 'border',
         },
         tertiary: {
-            default: 'border border-gray-75 bg-neutral-0 disabled:bg-neutral-0 active:!ring-0 focus:!ring-0 ',
+            default:
+                'border border-gray-75 bg-neutral-0 disabled:bg-neutral-0 active:!ring-0 focus:!ring-0 ',
         },
         quaternary: {
             default: 'border-none bg-neutral-0 disabled:bg-neutral-0',

@@ -1,3 +1,5 @@
 {
-    "required": "Please enter your {field}."
+    "required": "Please enter your {field}.",
+    "max": "The maximum number of characters allowed is {max}.",
+    "default": "Please enter your {field}."
 }
