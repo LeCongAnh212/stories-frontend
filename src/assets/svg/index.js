@@ -1,5 +1,11 @@
 import vue from './vue.svg'
+import uploadImage from './uploadImage.svg'
+import person from './person.svg'
+import cancel from './cancel.svg'
 
 export {
-    vue
+    vue,
+    uploadImage,
+    person,
+    cancel
 }

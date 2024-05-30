@@ -31,6 +31,8 @@ export default {
             900: '#EEEEEE',
             950: '#2A09CF',
           },
+          success: '#00C853',
+          error: '#FF0000',
         },
         gray: {
           25: '#F8F8F8',

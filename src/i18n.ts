@@ -3,8 +3,8 @@ import en from '@/locales/en'
 import ja from '@/locales/ja'
 
 const i18n = createI18n({
-    locale: 'ja',
-    fallbackLocale: ['ja', 'en'],
+    locale: 'en',
+    fallbackLocale: ['en', 'ja'],
     legacy: false,
     messages: {
         en,
