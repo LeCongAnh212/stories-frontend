@@ -60,9 +60,7 @@
             </div>
         </slot>
     </div>
-    <p v-show="isError()" class="text-main-error">{{ props.error }}</p>
-    <!-- <base-helper-text v-show="isError()" color="error" :value="errorField.value ?? props.error"
-        :class="customClassHelperText" icon="warning"></base-helper-text> -->
+    <p v-show="isError()" class="text-status-error">{{ props.error }}</p>
 </template>
 
 <script setup lang="ts">

@@ -11,8 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { error } from 'console'
-
 const slots = useSlots()
 const emits = defineEmits(['click'])
 const buttonRef = ref<HTMLElement | null>(null)
@@ -44,8 +42,8 @@ const styles = {
     colors: {
         primary: {
             default: 'text-neutral-0',
-            success: 'bg-main-success',
-            error: 'bg-main-error',
+            success: 'bg-status-success',
+            error: 'bg-status-error',
         },
         secondary: {
             default: 'border',

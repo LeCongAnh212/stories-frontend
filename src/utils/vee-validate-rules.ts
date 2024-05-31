@@ -24,11 +24,12 @@ export default () => {
     defineRule('required', required)
     defineRule('max', max)
     defineRule('fileType', (value, allowedTypes) => {
-        if (!value || !value.length) return true;
+              if (!value || !value.length) return true
         
-        const fileExtension = value.split('.').pop();
+        const fileExtension = value.split('.').pop()
 
         return allowedTypes.includes(fileExtension.toLowerCase()) ||
-            i18n.global.t('validation.fileType', { field: 'file', allowedTypes: allowedTypes.join(', ') });
+            i18n.global.t('validation.fileType', { field: 'file', allowedTypes: allowedTypes.join(', ') })
       })
+      
 }

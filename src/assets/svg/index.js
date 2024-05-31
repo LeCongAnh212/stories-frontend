@@ -7,5 +7,5 @@ export {
     vue,
     uploadImage,
     person,
-    cancel
+    cancel,
 }

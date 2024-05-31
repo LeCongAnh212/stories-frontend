@@ -1,10 +1,10 @@
 <template>
-    <div v-if="show" @click="changeShow" class="fixed w-full h-full bg-gray-25 opacity-80">
+    <div v-if="show" @click="show = !show" class="fixed w-full h-full bg-gray-25 opacity-80">
         <div
             @click.stop
             class="w-[400px] shadow-sm m-auto h-fit flex flex-col bg-white z-10 p-10 rounded-lg"
         >
-            <base-icon name="cancel" @click="changeShow" class="self-end w-8 h-8"></base-icon>
+            <base-icon name="cancel" @click="show = !show" class="self-end w-8 h-8"></base-icon>
             <label htmlFor="fileUpload" class="flex justify-center relative mb-6">
                 <img
                     v-if="imagePreview"
@@ -54,18 +54,13 @@ import { useField } from 'vee-validate'
 import { ALLOWED_IMAGE_TYPES, MAX_TEXT_INPUT } from '@/constants'
 import i18n from '@/i18n'
 
-//const store = useStore()
+const store = useStore()
 const show = ref<boolean>(true)
 const { t } = i18n.global
 const imagePreview = ref<string | null>(null)
 
-const changeShow = () => {
-    show.value = !show.value
-}
-
 const author = reactive<FormAuthorData>({
-    // create_by_user_id: store.state.auth.user.id,
-    create_by_user_id: 1,
+    create_by_user_id: store.getters['author/currenUser'].id,
     author_name: computed(() => valueFieldName) as unknown as string,
 })
 
@@ -103,7 +98,7 @@ const createAuthor = async () => {
         try {
             await authors.create(author)
             showToast(t('author.register_sucess'), ToastType.SUCCESS)
-            changeShow()
+            show.value = !show.value
         } catch (error) {
             showToast(t('author.register_failed'), ToastType.ERROR)
             console.log(error)
