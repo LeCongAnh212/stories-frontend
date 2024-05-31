@@ -16,6 +16,11 @@ declare module '@vue/runtime-core' {
     BaseToastMessage: typeof import('./components/atoms/BaseToastMessage.vue')['default']
     DefaultFooter: typeof import('./components/organisms/DefaultFooter.vue')['default']
     DefaultHeader: typeof import('./components/organisms/DefaultHeader.vue')['default']
+    DefaultList: typeof import('./components/organisms/DefaultList.vue')['default']
+    ElAside: typeof import('element-plus/es')['ElAside']
+    ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElMain: typeof import('element-plus/es')['ElMain']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

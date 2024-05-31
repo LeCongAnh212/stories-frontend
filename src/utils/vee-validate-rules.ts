@@ -1,7 +1,5 @@
 import { configure, defineRule } from 'vee-validate'
-import {
-    required,
-} from '@vee-validate/rules'
+import { required } from '@vee-validate/rules'
 import i18n from '@/i18n'
 
 configure({
