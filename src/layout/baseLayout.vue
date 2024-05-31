@@ -5,7 +5,7 @@
                 <DefaultHeader />
             </el-header>
             <el-container class="">
-                <el-aside width="400px" class="bg-gray-100">
+                <el-aside class="bg-gray-100 lg:!w-[400px] md:!w-[300px] hidden md:block">
                     <DefaultList />
                 </el-aside>
                 <el-main class="bg-cyan-200">
