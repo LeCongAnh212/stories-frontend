@@ -10,7 +10,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BaseButton: typeof import('./components/atoms/BaseButton.vue')['default']
+    BaseHelperText: typeof import('./components/atoms/BaseHelperText.vue')['default']
     BaseIcon: typeof import('./components/atoms/BaseIcon.vue')['default']
+    BaseInputField: typeof import('./components/atoms/BaseInputField.vue')['default']
     BaseLoading: typeof import('./components/atoms/BaseLoading.vue')['default']
     BasePagination: typeof import('./components/atoms/BasePagination.vue')['default']
     BaseToastMessage: typeof import('./components/atoms/BaseToastMessage.vue')['default']

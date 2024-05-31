@@ -6,7 +6,7 @@ const authRouter: Array<RouteRecordRaw> = [
         path: '/auth/login',
         name: 'login',
         meta: {
-            middleware: [checkLogin],
+            //middleware: [checkLogin],
         },
         component: () => import('@/views/auth/login/index.vue'),
     },
@@ -14,6 +14,11 @@ const authRouter: Array<RouteRecordRaw> = [
         path: '/page-error',
         name: 'page_error',
         component: () => import('@/views/page-error/index.vue'),
+    },
+    {
+        path: '/page-unauthorized',
+        name: 'page_unauthorized',
+        component: () => import('@/views/page-unauthorized/index.vue'),
     },
     {
         path: '/:pathMatch(.*)*',

@@ -1,8 +1,7 @@
 export const USER_ROLE = {
-    AGENT: 1,
-    STAFF: 2,
-    MANAGER: 3,
-    COMPANY: 4,
+    ADMIN: 1,
+    AUTHOR: 2,
+    USER: 3,
 }
 
 export const USER_GENDER = {
