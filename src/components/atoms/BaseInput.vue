@@ -31,7 +31,7 @@
             :autocomplete="autocomplete"
             class="text-neutral-75 h-12 w-full px-4 py-2 rounded-lg border border-gray-75 text-body-xs caret-functional-info-500 placeholder:text-neutral-50 focus:ring-2 focus:ring-offset-0 focus:ring-functional-info-75 focus:border focus-visible:outline-main-primary-500 focus:border-main-primary-500 disabled:text-neutral-[#353A40] disabled:bg-gray-250 disabled:cursor-not-allowed"
             :class="{
-                '!border-functional-danger-500 !ring-functional-danger-75': isError(),
+                '!border-functional-danger-500 !ring-functional-danger-75': true,
                 'pl-11 pr-3.5 ': iconLeft,
                 'pr-11 pl-3.5': iconRight,
                 '!px-11': iconLeft && iconRight,
