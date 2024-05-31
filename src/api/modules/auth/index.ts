@@ -23,8 +23,6 @@ export const register = async (data: FormRegister): Promise<RegisterResponse> =>
 
 export const resendEmail = async (data: FormRegister): Promise<RegisterResponse> => {
     try {
-        console.log('oke');
-        
         return await axios.post('/send-email', data, { headers })
     } catch (error) {
         return Promise.reject(error)

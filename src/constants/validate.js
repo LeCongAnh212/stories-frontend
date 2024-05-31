@@ -1,1 +1,3 @@
-export const MAX_TEXT_INPUT = 255
+const MAX_TEXT_INPUT = 255
+
+export { MAX_TEXT_INPUT }

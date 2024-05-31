@@ -2,19 +2,15 @@
     <el-dialog
         v-model="innerDialogVisible"
         title="Register an Account"
-        width="700"
-        class="!px-20 flex flex-col items-center justify-center [&>div]:w-full [&>div]:flex [&>div]:flex-col [&>div]:gap-5 [&>div]:justify-center [&>div]:items-center"
+        width="full"
+        class="!px-20 flex h-full fixed !mt-0 flex-col items-center justify-center [&>div]:w-full [&>div]:flex [&>div]:flex-col [&>div]:gap-5 [&>div]:justify-center [&>div]:items-center"
     >
         <span>Register to follow and like books</span>
 
         <div>
             <div class="relative">
                 <div class="rounded-full bg-main-primary-300 w-20 h-20 flex items-center overflow-hidden">
-                    <img
-                        :src="URLImage ?? '../../assets/img/default_avatar.png'"
-                        class="object-cover w-full h-full"
-                        alt=""
-                    />
+                    <img :src="URLImage" class="object-cover w-full h-full" alt="" />
                 </div>
                 <label htmlFor="abc" class="absolute cursor-pointer bottom-1 right-1 w-5 h-5 text-gray-300">
                     <BaseIcon name="photo" />
@@ -22,7 +18,6 @@
                         id="abc"
                         @change="onFileChange"
                         fieldName="avatar"
-                        :rules="['required', 'email']"
                         type="file"
                         accept="image/*"
                         class="mt-1 border-blue-300 hidden"
@@ -122,11 +117,11 @@
 </template>
 
 <script setup lang="ts">
-// import { FormRegister } from '@api/modules/auth/types.ts'
 import { FormRegister } from '../../api/modules/auth/types'
 import { MAX_WIDTH_SM } from '@/constants'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
+import i18n from '@/i18n'
 
 const store = useStore()
 const router = useRouter()
@@ -152,10 +147,13 @@ const isLoadingButton = ref(false)
 
 const { errors } = useForm({
     validationSchema: yup.object({
-        email: yup.string().email('Invalid email').required('Email is required'),
-        username: yup.string().required('Username is required'),
-        password: yup.string().required('Password is required'),
-        fullname: yup.string().required('Fullname is required'),
+        email: yup
+            .string()
+            .email(i18n.global.t('validation.email', { field: 'email' }))
+            .required(i18n.global.t('validation.required', { field: 'email' })),
+        username: yup.string().required(i18n.global.t('validation.required', { field: 'username' })),
+        password: yup.string().required(i18n.global.t('validation.required', { field: 'password' })),
+        fullname: yup.string().required(i18n.global.t('validation.required', { field: 'fullname' })),
     }),
 })
 
@@ -163,12 +161,10 @@ watch(innerDialogVisible, (newValue) => {
     emit('update:dialogVisible', newValue)
 })
 
-watch(
-    () => props.dialogVisible,
-    (newValue) => {
-        innerDialogVisible.value = newValue
-    },
-)
+const dialogVisible = () => props.dialogVisible
+watch(dialogVisible, (newValue) => {
+    innerDialogVisible.value = newValue
+})
 
 onMounted(() => {
     window.addEventListener('resize', handleResize)
@@ -183,6 +179,7 @@ onUnmounted(() => {
 
 const handleResize = () => {
     if (innerDialogVisible.value && window.innerWidth < MAX_WIDTH_SM) {
+        console.log('window.innerWidth: ', window.innerWidth)
         router.push({ name: 'register' })
     }
 }

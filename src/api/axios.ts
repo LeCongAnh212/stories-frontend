@@ -64,7 +64,6 @@ instance.interceptors.response.use(
         ]
 
         if (typeof httpCode === 'number' && errorCodesToRedirect.includes(httpCode)) {
-            console.log('typeof httpCode: ', typeof httpCode);
             return router.push({ name: 'page_error' })
         }
 

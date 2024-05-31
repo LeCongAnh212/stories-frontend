@@ -9,5 +9,6 @@
         "email": "Email",
         "created": "Created at",
         "action": "Action"
-    }
+    },
+    "created_success": "Successful account registration"
 }

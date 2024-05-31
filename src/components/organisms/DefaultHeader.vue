@@ -7,22 +7,15 @@
             <li v-for="item in categories">{{ item }}</li>
         </ul>
         <div>
-            <el-button type="success" plain @click="dialogVisible = true">Register</el-button>
-            <!-- <BaseButton status="warning">ádasdasd</BaseButton> -->
+            <router-link :to="{ name: 'register' }">
+                <el-button type="success" plain>Register</el-button>
+            </router-link>
         </div>
     </div>
-
-    <RegisterModal :dialogVisible="dialogVisible" @update:dialogVisible="handleModalRegister" />
 </template>
 
 <script setup lang="ts">
 defineEmits(['update:dialogVisible'])
 
 const categories = reactive(['Novel', 'Comit', 'Postcard'])
-
-const dialogVisible = ref(false)
-
-const handleModalRegister = (value) => {
-    dialogVisible.value = value
-}
 </script>
