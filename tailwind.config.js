@@ -13,7 +13,7 @@ export default {
             },
             colors: {
                 current: 'currentcolor',
-                'main-color': '#000000',
+                'main-color': '#1ed291',
                 status: {
                     success: '#00B955',
                     error: '#FF0000',
