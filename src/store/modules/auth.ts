@@ -11,9 +11,9 @@ const authModule: Module<RootState> = {
     actions: {
         async register({}, payload: FormRegister) {
             try {
-                await register(payload)
+                return await register(payload)
             } catch (error) {
-                console.log('error: ', error)
+                throw error
             }
         },
         async resendEmail({}, payload: FormRegister) {

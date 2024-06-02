@@ -162,7 +162,7 @@ const attrs = useAttrs()
 
 const { value: valueField, errorMessage } = useField(
     props.fieldName !== '' ? props.fieldName : (attrs.placeholder as string),
-    rule,
+    [],
 )
 
 const errorField = reactive({
@@ -194,9 +194,9 @@ const compositionupdate = () => {
     emits('input')
 }
 
-const isError = () => {
-    return !!errorField.value || props.error
-}
+// const isError = () => {
+//     return !!errorField.value || props.error
+// }
 </script>
 
 <style scoped>

@@ -23,3 +23,7 @@ export interface RegisterResponse {
     code: number
     message: string
 }
+
+export interface UserDetail {
+    status: number
+}
