@@ -1,5 +1,7 @@
 import router from '@/router'
 import dayjs from 'dayjs'
+import { showToast } from './toastHelper'
+import { ToastType } from '@/types'
 
 const currentDate = dayjs()
 
@@ -30,4 +32,11 @@ export const getFirstDayOfMonth = () => {
 
 export const getLastDayOfMonth = () => {
     return dayjs().endOf('month').format('YYYY/MM/DD')
+}
+
+export const showError = (error) => {
+    for (const value of Object.values(error)) {
+        showToast(value[0], ToastType.ERROR)
+        break
+    }
 }

@@ -4,10 +4,10 @@
             <BaseIcon name="arrowLeft" stroke="white" fill="white" :isActiveHover="true" />
         </div>
 
-        <strong class="mb-20">Register Account</strong>
+        <strong class="mb-20 text-3xl">Register Account</strong>
 
         <div class="lg:w-1/3 md:w-1/2 w-full flex flex-col items-center gap-3">
-            <p>Create a free account</p>
+            <p class="text-2xl">Create a free account</p>
 
             <div>
                 <div class="relative">
@@ -35,12 +35,14 @@
             <div class="w-full relative">
                 <label for="" class="text-left">Email:</label>
                 <BaseInput
+                    id="a"
                     v-model="user.email"
                     fieldName="email"
                     placeholder="email"
                     type="email"
                     class="mt-1 border-blue-300"
                     :error="errors.email"
+                    @keyup.enter="register"
                 >
                 </BaseInput>
                 <span v-show="errors.email && isSubmit" class="text-red-500 absolute text-[0.7rem]">
@@ -50,28 +52,38 @@
             <div class="w-full">
                 <label for="" class="text-left">Username:</label>
                 <BaseInput
+                    id="b"
                     v-model="user.username"
                     fieldName="username"
                     placeholder="username"
                     class="mt-1 border-blue-300"
                     :error="errors.username"
+                    @keyup.enter="register"
                 >
                 </BaseInput>
                 <span v-show="errors.username && isSubmit" class="text-red-500 absolute text-[0.7rem]">
                     {{ errors.username }}
                 </span>
             </div>
-            <div class="w-full">
+            <div class="w-full relative">
                 <label for="" class="text-left">Password:</label>
                 <BaseInput
+                    id="c"
                     v-model="user.password"
                     fieldName="password"
                     placeholder="password"
-                    type="password"
-                    class="mt-1 border-blue-300"
+                    :type="!showPassword ? 'password' : 'text'"
+                    class="mt-1 border-blue-300 [&>input]:pe-10"
                     :error="errors.password"
+                    @keyup.enter="register"
                 >
                 </BaseInput>
+                <div
+                    class="absolute w-5 right-2 top-1/2 translate-y-1/2 cursor-pointer"
+                    @click="showPassword = !showPassword"
+                >
+                    <BaseIcon :name="showPassword ? 'eye' : 'eyeSlash'" />
+                </div>
                 <span v-show="errors.password && isSubmit" class="text-red-500 absolute text-[0.7rem]">
                     {{ errors.password }}
                 </span>
@@ -79,12 +91,14 @@
             <div class="w-full">
                 <label for="" class="text-left">Fullname:</label>
                 <BaseInput
+                    id="d"
                     v-model="user.full_name"
                     fieldName="fullname"
                     placeholder="fullname"
                     :rules="['required', 'email']"
                     class="mt-1 border-blue-300"
                     :error="errors.fullname"
+                    @keyup.enter="register"
                 >
                 </BaseInput>
                 <span v-show="errors.fullname && isSubmit" class="text-red-500 absolute text-[0.7rem]">
@@ -113,7 +127,7 @@
                         Register
                     </el-button>
                 </div>
-                <p>
+                <p class="text-sm mt-2">
                     Do you already have an account?
                     <router-link :to="{ name: 'login' }">
                         <span class="text-main-primary-300 hover:text-main-primary-400 hover:underline cursor-pointer">
@@ -124,8 +138,6 @@
             </div>
         </div>
     </div>
-
-    <BaseToastMessage content="Hello" />
 </template>
 
 <script setup lang="ts">
@@ -133,43 +145,43 @@ import { user } from './common'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 import i18n from '@/i18n'
-import {} from '@/utils'
-import { showToast } from '@/utils/toastHelper'
+import { showToast, showError } from '@/utils'
 import { ToastType } from '@/types'
 
+const { t } = i18n.global
 const store = useStore()
 
 const URLImage = ref('../src/assets/img/default_avatar.png')
 const isSubmit = ref(false)
 const isLoadingButton = ref(false)
+const showPassword = ref(false)
 
 const { errors } = useForm({
     validationSchema: yup.object({
         email: yup
             .string()
-            .email(i18n.global.t('validation.email', { field: 'email' }))
-            .required(i18n.global.t('validation.required', { field: 'email' })),
-        username: yup.string().required(i18n.global.t('validation.required', { field: 'username' })),
-        password: yup.string().required(i18n.global.t('validation.required', { field: 'password' })),
-        fullname: yup.string().required(i18n.global.t('validation.required', { field: 'fullname' })),
+            .email(t('validation.email', { field: 'email' }))
+            .required(t('validation.required', { field: 'email' })),
+        username: yup.string().required(t('validation.required', { field: 'username' })),
+        password: yup.string().required(t('validation.required', { field: 'password' })),
+        fullname: yup.string().required(t('validation.required', { field: 'fullname' })),
     }),
 })
 
 const register = async () => {
     try {
-        // isLoadingButton.value = true
-        // isSubmit.value = true
+        isLoadingButton.value = true
+        isSubmit.value = true
 
-        // if (errors.value && Object.keys(errors.value).length > 0) {
-        //     return
-        // }
+        if (errors.value && Object.keys(errors.value).length > 0) return
 
-        // await store.dispatch('auth/register', user)
+        const check = await store.dispatch('auth/register', user)
 
-        // isLoadingButton.value = false
-        showToast('This is a success message', ToastType.SUCCESS)
+        if (check) showToast(t('user.created_success'), ToastType.SUCCESS)
     } catch (error) {
-        console.log('error: ', error)
+        showError(error)
+    } finally {
+        isLoadingButton.value = false
     }
 }
 function onFileChange(event) {
@@ -184,15 +196,13 @@ const resendEmail = async () => {
         isLoadingButton.value = true
         isSubmit.value = true
 
-        if (errors.value && Object.keys(errors.value).length > 0) {
-            return
-        }
+        if (errors.value && Object.keys(errors.value).length > 0) return
 
         await store.dispatch('auth/resendEmail', user)
-
-        isLoadingButton.value = false
     } catch (error) {
-        console.log('error: ', error)
+        showError(error)
+    } finally {
+        isLoadingButton.value = false
     }
 }
 </script>

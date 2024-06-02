@@ -10,5 +10,6 @@
         "created": "Created at",
         "action": "Action"
     },
-    "created_success": "Successful account registration"
+    "created_success": "Successful account registration",
+    "create_error": "Error account registration"
 }
