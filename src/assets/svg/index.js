@@ -1,5 +1,9 @@
 import vue from './vue.svg'
+import eye from './eye.svg'
+import photo from './photo.svg'
+import arrowLeft from './arrow-left.svg'
+import eyeSlash from './eye-slash.svg'
+import bars from './bars.svg'
+import search from './search.svg'
 
-export {
-    vue
-}
+export { vue, eye, photo, arrowLeft, eyeSlash, bars, search }
