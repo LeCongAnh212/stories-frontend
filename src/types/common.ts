@@ -38,5 +38,7 @@ export interface Genre {
 export interface Story {
     id: number
     title: string
+    cover_image: string
+    description?: string
     views?: number
 }
