@@ -17,7 +17,17 @@ declare module '@vue/runtime-core' {
     DefaultFooter: typeof import('./components/organisms/DefaultFooter.vue')['default']
     DefaultHeader: typeof import('./components/organisms/DefaultHeader.vue')['default']
     DefaultList: typeof import('./components/organisms/DefaultList.vue')['default']
+    ElAside: typeof import('element-plus/es')['ElAside']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDropdown: typeof import('element-plus/es')['ElDropdown']
+    ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
+    ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
+    ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElMain: typeof import('element-plus/es')['ElMain']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    StoryList: typeof import('./components/organisms/StoryList/StoryList.vue')['default']
   }
 }

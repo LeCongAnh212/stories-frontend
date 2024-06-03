@@ -1,11 +1,5 @@
-<template>
-        list
-</template>
-    
-<script setup lang='ts'>
-    
-</script>
-    
-<style>
-    
-</style>
+<template>Lisst</template>
+
+<script setup lang="ts"></script>
+
+<style></style>
