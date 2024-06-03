@@ -1,5 +1,6 @@
 <template>
     <div>
-        Home
+        <author-register></author-register>
     </div>
 </template>
+<script setup lang="ts"></script>

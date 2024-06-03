@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-screen flex flex-col">
-        <DefaultHeader :is-open="isOpen" @toggle="toggleMenu" />
+        <DefaultHeader />
         <div class="flex h-full justify-start bg-main-primary-900 pt-[50px]">
             <div class="overflow-auto" :class="'w-full'">
                 <div class="min-h-[calc(100vh-100px)] sp:min-h-[calc(100vh-130px)]">
@@ -12,7 +12,6 @@
     </div>
 </template>
 <script>
-
 export default {
     name: 'DefaultLayout',
     data() {
@@ -20,8 +19,7 @@ export default {
             isOpen: false,
         }
     },
-    created() {
-    },
+    created() {},
     methods: {
         toggleMenu() {
             this.isOpen = !this.isOpen

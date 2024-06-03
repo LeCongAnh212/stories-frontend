@@ -1,3 +1,6 @@
 {
-    "required": "Please enter your {field}."
+    "required": "Please enter your {field}.",
+    "max": "{field} must not exceed {length} characters",
+    "fileType": "The item file is not in the correct format",
+    "default": "{field} is not valid"
 }

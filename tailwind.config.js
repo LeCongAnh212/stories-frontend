@@ -14,6 +14,11 @@ export default {
       colors: {
         current: 'currentcolor',
         'main-color': '#000000',
+        status: {
+          success: '#00B955',
+          error: '#FF0000',
+          warning: '#FFA500',
+        },
         main: {
           primary: {
             25: '#F5FCFF',

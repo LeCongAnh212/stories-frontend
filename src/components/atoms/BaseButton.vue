@@ -42,12 +42,15 @@ const styles = {
     colors: {
         primary: {
             default: 'text-neutral-0',
+            success: 'bg-status-success',
+            error: 'bg-status-error',
         },
         secondary: {
             default: 'border',
         },
         tertiary: {
-            default: 'border border-gray-75 bg-neutral-0 disabled:bg-neutral-0 active:!ring-0 focus:!ring-0 ',
+            default:
+                'border border-gray-75 bg-neutral-0 disabled:bg-neutral-0 active:!ring-0 focus:!ring-0 ',
         },
         quaternary: {
             default: 'border-none bg-neutral-0 disabled:bg-neutral-0',
