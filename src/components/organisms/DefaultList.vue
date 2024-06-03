@@ -42,7 +42,7 @@ const novelGenres = computed(() =>
     )
 )
 
-const popularStories = ref([
+const popularStories: any = ref([
     { id: 1, title: 'Truyện Khoa học 1', views: 123 },
     {
         id: 2,
@@ -51,7 +51,7 @@ const popularStories = ref([
     },
 ])
 
-const newStories = ref([
+const newStories: any = ref([
     { id: 1, title: 'Truyện Cổ đại 1' },
     { id: 2, title: 'Truyện Lịch sử 1' },
 ])

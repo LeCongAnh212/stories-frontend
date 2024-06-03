@@ -38,7 +38,9 @@ export interface Genre {
 export interface Story {
     id: number
     title: string
+    cover_image: string
     views?: number
+    author?: string
 }
 
 export interface AuthState {}
