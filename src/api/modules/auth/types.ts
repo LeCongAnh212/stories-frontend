@@ -10,3 +10,7 @@ export interface LoginResponse {
     access_token: string
     data: any
 }
+
+export interface UserDetail{
+    status: number
+}

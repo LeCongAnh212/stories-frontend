@@ -1,7 +1,7 @@
 <template>
     <div class="flex h-screen mx-auto max-w-[1440px]">
         <div class="basis-1/2 h-full flex flex-col justify-center p-[20px] sp:hidden">
-            <img src="@/assets/img/welcome_management.png" alt="" class="object-contain !h-[calc(100vh-40px)]" />
+            <!-- <img src="@/assets/img/welcome_management.png" alt="" class="object-contain !h-[calc(100vh-40px)]" /> -->
         </div>
         <div class="basis-1/2 relative md:w-full sp:mx-auto">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-full md:px-[30px]">
@@ -29,6 +29,8 @@ import { LoginRequest } from '@/api/modules/auth/types'
 import router from '@/router'
 import { showToast } from '@/utils/toastHelper'
 import { clearObject, isObjectEmpty } from '@/utils/helper'
+import { ToastType } from '@/types'
+import { useForm } from 'vee-validate'
 
 const state = reactive({
     email: undefined,
@@ -40,6 +42,7 @@ const state = reactive({
 const errorMsg: LoginRequest = reactive({
     email: '',
     password: '',
+    role: 1
 })
 const { validate, errors } = useForm()
 const store = useStore()
@@ -63,7 +66,7 @@ const handleLogin = async () => {
         await store.dispatch('auth/login', state)
         await store.dispatch('auth/profile')
 
-        router.push({ name: nextRoute })
+        router.push({ name: 'home' })
         window.location.reload() // Reload the page to update the profile language settings
     } catch (error: any) {
         showToast(error.message, ToastType.ERROR)
