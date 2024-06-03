@@ -100,7 +100,7 @@ import type { DropdownInstance } from 'element-plus'
 const search = ref('')
 const isLogin = ref(false)
 const navbar = ref<HTMLElement | null>(null)
-const isOpen = ref(true)
+const isOpen = ref(false)
 const dropdown = ref<DropdownInstance>()
 
 function showClick() {
