@@ -24,3 +24,5 @@ export interface ResponseSuccessNoContent {
     code: number
     message: string
 }
+
+export interface AuthState {}

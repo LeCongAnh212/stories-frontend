@@ -10,3 +10,20 @@ export interface LoginResponse {
     access_token: string
     data: any
 }
+
+export interface FormRegister {
+    username: string
+    email: string
+    password: string
+    full_name: string
+    avatar?: File | null
+}
+
+export interface RegisterResponse {
+    code: number
+    message: string
+}
+
+export interface UserDetail {
+    status: number
+}

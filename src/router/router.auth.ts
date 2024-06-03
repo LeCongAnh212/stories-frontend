@@ -11,6 +11,14 @@ const authRouter: Array<RouteRecordRaw> = [
         component: () => import('@/views/auth/login/index.vue'),
     },
     {
+        path: '/auth/register',
+        name: 'register',
+        meta: {
+            // middleware: [checkLogin],
+        },
+        component: () => import('@/views/auth/register/index.vue'),
+    },
+    {
         path: '/page-error',
         name: 'page_error',
         component: () => import('@/views/page-error/index.vue'),

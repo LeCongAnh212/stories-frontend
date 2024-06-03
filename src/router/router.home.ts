@@ -9,7 +9,7 @@ const homeRouter: Array<RouteRecordRaw> = [
         redirect: '/',
         component: DefaultLayout,
         meta: {
-            // middleware: [checkLogin],
+            middleware: [checkLogin],
         },
         children: [
             {

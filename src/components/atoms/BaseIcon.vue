@@ -3,7 +3,7 @@
         :is="svg"
         :class="[
             `[&>path]:!stroke-${stroke} duration-300`,
-            isActiveHover ? `[&>path]:!stroke-white [&>path]:!fill-${fill}` : '',
+            isActiveHover ? `![&>path]:!stroke-white ![&>path]:!fill-${fill}` : '',
         ]"
         v-bind="$attrs"
     />
