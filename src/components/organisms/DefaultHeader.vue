@@ -3,11 +3,7 @@
         <router-link :to="{ name: 'home' }">
             <div class="flex items-center gap-4 cursor-pointer none text-black">
                 <div class="overflow-hidden rounded-full w-10 h-10 flex items-center">
-                    <img
-                        class="object-cover w-full h-full"
-                        src="../../assets/img/logo.jpg"
-                        alt=""
-                    />
+                    <img class="object-cover w-full h-full" :src="logo" alt="logo" />
                 </div>
                 <span class="text-3xl font-bold">Story</span>
             </div>
@@ -37,7 +33,7 @@
                         class="w-10 h-10 flex items-center overflow-hidden rounded-full cursor-pointer"
                         @click="showClick()"
                     >
-                        <img src="../../assets/img/avatar_default.png" alt="" />
+                        <img :src="avatarDefault" alt="avatar" />
                     </div>
                 </span>
                 <template #dropdown>
@@ -64,7 +60,7 @@
                     <div
                         class="w-10 h-10 flex items-center overflow-hidden rounded-full cursor-pointer"
                     >
-                        <img src="../../assets/img/avatar_default.png" alt="" />
+                        <img :src="avatarDefault" alt="avatar" />
                     </div>
                     <b class="text-2xl">Lê Công Anh</b>
                 </div>
@@ -96,15 +92,18 @@
 
 <script setup lang="ts">
 import type { DropdownInstance } from 'element-plus'
+import avatarDefault from '@/assets/img/avatar_default.png'
+import logo from '@/assets/img/logo.jpg'
 
 const search = ref('')
-const isLogin = ref(false)
+const isLogin = ref(true)
 const navbar = ref<HTMLElement | null>(null)
 const isOpen = ref(true)
 const dropdown = ref<DropdownInstance>()
 
 function showClick() {
     if (!dropdown.value) return
+
     dropdown.value.handleOpen()
 }
 function handleOpenNavbar() {
@@ -115,10 +114,8 @@ function handleOpenNavbar() {
     }
 }
 const handleClick = (event) => {
-    if (navbar.value) {
-        if (!navbar.value.contains(event.target)) {
-            isOpen.value = false
-        }
+    if (navbar.value && !navbar.value.contains(event.target)) {
+        isOpen.value = false
     }
 }
 
@@ -130,12 +127,3 @@ onUnmounted(() => {
     document.removeEventListener('click', handleClick)
 })
 </script>
-
-<style scoped lang="scss">
-.example-showcase .el-dropdown-link {
-    cursor: pointer;
-    color: var(--el-color-primary);
-    display: flex;
-    align-items: center;
-}
-</style>

@@ -1,8 +1,5 @@
 <template>
     <div class="flex h-screen mx-auto max-w-[1440px]">
-        <div class="basis-1/2 h-full flex flex-col justify-center p-[20px] sp:hidden">
-            <!-- <img src="@/assets/img/welcome_management.png" alt="" class="object-contain !h-[calc(100vh-40px)]" /> -->
-        </div>
         <div class="basis-1/2 relative md:w-full sp:mx-auto">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-full md:px-[30px]">
                 <p class="text-black text-center text-headline-l mb-10 mt-6">
@@ -42,7 +39,6 @@ const state = reactive({
 const errorMsg: LoginRequest = reactive({
     email: '',
     password: '',
-    role: 1
 })
 const { validate, errors } = useForm()
 const store = useStore()
