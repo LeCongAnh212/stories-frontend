@@ -41,7 +41,10 @@ const styles = {
     common: 'rounded-lg disabled:cursor-not-allowed focus:ring-offset-0 focus:ring-2 active:ring-2 box-border flex justify-center items-center disabled:bg-gray-75 disabled:text-neutral-50',
     colors: {
         primary: {
-            default: 'text-neutral-0',
+            default: '',
+            success: 'bg-status-success',
+            danger: 'bg-status-danger',
+            warning: 'bg-status-warning',
         },
         secondary: {
             default: 'border',
@@ -124,8 +127,7 @@ const buttonClass = computed(() => {
     return [
         styles.common,
         styles.sizes[props.size],
-        styles.colors[color()].default,
-        styles.colors[color()][props.status],
+        styles.colors[color()][props.status] ?? styles.colors[color()].default,
         props.square && styles.square[props.size],
         slots.prefix && styles.paddingX[props.size]?.prefix,
         slots.suffix && styles.paddingX[props.size]?.suffix,

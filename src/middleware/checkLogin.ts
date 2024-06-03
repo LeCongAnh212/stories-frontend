@@ -1,8 +1,9 @@
 import { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import store from '@/store'
-import { UserDetail } from '@/api/modules/auth/types'
-import { LANGUAGE, USER_ROLE } from '@/constants'
-import { USER_STATUS } from '@/constants'
+import { USER_ROLE } from '@/constants'
+import { showToast } from '@/utils/toastHelper'
+import { ToastType } from '@/types'
+import i18n from '@/i18n'
 
 export async function checkLogin(
     to: RouteLocationNormalized,
@@ -19,16 +20,27 @@ export async function checkLogin(
     }
 
     if (isLoggedIn) {
-        const auth: UserDetail = await store.dispatch('auth/profile')
-
-        if (auth.status != USER_STATUS.ACTIVE) {
-            nextTick(() => {
-                store.dispatch('auth/logout').then(() => router.push({ name: 'company.login' }))
-            })
+        if (to.name === 'login' || excludedRoutes.includes(to.name as string)) {
+            return next({ name: 'login' })
         }
 
-        if (to.name === 'login' || excludedRoutes.includes(to.name as string)) {
-            return next({ name: 'agent.home' })
+        const currentUser = store.getters['auth/currentUser']
+        const userRole = currentUser.role
+
+        if (to.name === 'dashboard_admin' && userRole != USER_ROLE.ADMIN) {
+            showToast(i18n.global.t('common.unauthorized'), ToastType.ERROR)
+
+            return next({ name: 'page_unauthorized' })
+        }
+
+        if (
+            to.name === 'dashboard_author' &&
+            userRole != USER_ROLE.AUTHOR &&
+            userRole != USER_ROLE.ADMIN
+        ) {
+            showToast(i18n.global.t('common.unauthorized'), ToastType.ERROR)
+
+            return next({ name: 'page_unauthorized' })
         }
 
         next()

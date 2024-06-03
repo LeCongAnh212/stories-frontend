@@ -1,12 +1,12 @@
 export interface LoginRequest {
     email: string | undefined
     password: string | undefined
-    role: number
+    // role: number
 }
 
 export interface LoginResponse {
     code: number
     message: string
     access_token: string
-    data: any
+    user: any
 }
