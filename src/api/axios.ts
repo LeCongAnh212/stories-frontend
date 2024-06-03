@@ -6,8 +6,6 @@ import {
     HTTP_UNAUTHORIZED,
     CODE_UNAUTHENTICATED,
     CODE_ACTION_CANNOT_DONE,
-    ERR_NETWORK,
-    ECONNABORTED,
     HTTP_NOT_FOUND,
     HTTP_NOT_ALLOWED,
     HTTP_REQUEST_TIMEOUT,
@@ -17,8 +15,7 @@ import {
     HTTP_SERVER_ERROR,
     HTTP_FORBIDDEN,
 } from '@/constants'
-import { ResponseError, ToastType } from '@/types'
-import { showToast } from '@/utils/toastHelper'
+import { ResponseError } from '@/types'
 import store from '@/store'
 import router from '@/router'
 const instance = axios.create({

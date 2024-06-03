@@ -7,7 +7,6 @@ import i18n from '@/i18n'
 configure({
     generateMessage: (context) => {
         const field = context.field
-        const params = context?.rule?.params ?? {}
         const rule = context.rule ?? { name: '' }
         const messages = {
             required: (field) => i18n.global.t('validation.required', { field }),
