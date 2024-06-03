@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     BaseToastMessage: typeof import('./components/atoms/BaseToastMessage.vue')['default']
     DefaultFooter: typeof import('./components/organisms/DefaultFooter.vue')['default']
     DefaultHeader: typeof import('./components/organisms/DefaultHeader.vue')['default']
+    DefaultList: typeof import('./components/organisms/DefaultList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

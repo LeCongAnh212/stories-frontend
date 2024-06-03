@@ -1,13 +1,13 @@
 import { RouteRecordRaw } from 'vue-router'
-import DefaultLayout from '@/layout/defaultLayout.vue'
-import { checkLogin } from '@/middleware/checkLogin'
+import BaseLayout from '@/layout/baseLayout.vue'
+// import { checkLogin } from '@/middleware/checkLogin'
 
 const homeRouter: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
         redirect: '/',
-        component: DefaultLayout,
+        component: BaseLayout,
         meta: {
             // middleware: [checkLogin],
         },
